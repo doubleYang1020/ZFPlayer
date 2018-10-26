@@ -305,20 +305,26 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
         if (self.controlViewAppeared) {
             [self hideControlViewWithAnimated:YES];
         } else {
-            /// 显示之前先把控制层复位，先隐藏后显示
-            [self hideControlViewWithAnimated:NO];
             [self showControlViewWithAnimated:YES];
         }
     }
+    
+    // add by hyy
+    [self.landScapeControlView playOrPause];
+    [self.portraitControlView.topToolView setHidden:true];
+    [self.portraitControlView.bottomToolView setHidden:true];
+    
+    
 }
-
+    
 /// 双击手势事件
 - (void)gestureDoubleTapped:(ZFPlayerGestureControl *)gestureControl {
-    if (self.player.isFullScreen) {
-        [self.landScapeControlView playOrPause];
-    } else {
-        [self.portraitControlView playOrPause];
-    }
+    //del by hyy
+    //    if (self.player.isFullScreen) {
+    //        [self.landScapeControlView playOrPause];
+    //    } else {
+    //        [self.portraitControlView playOrPause];
+    //    }
 }
 
 /// 开始滑动手势事件
